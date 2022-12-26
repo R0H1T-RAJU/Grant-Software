@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon"
+        href="https://cdn.discordapp.com/attachments/990818520705167440/993929348354691103/Remove_background.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+
+    <title>Grants Manager</title>
+
+    <script type="text/javascript">
+
+        function loadGrantInfo() {
+            const selectedGrant = document.getElementById('grantList').value;
+            $.post("/view/", "grantid=" + selectedGrant, function (data, status) {
+                var div = $("<div>").html(data);
+                var content = $("#viewData", div.get(0));
+                $('#grantInfo').html(content);
+            }, "html");
+        }
+
+        function createGrant() {
+            $.post("/edit/", 'action=create', function (data, status) {
+                var div = $("<div>").html(data);
+                var content = $("#createData", div.get(0));
+                const element = document.querySelector('.blur');
+                document.querySelector('.title').style.filter = 'blur(3px)';
+                element.style.filter = 'blur(3px)';
+                element.style.pointerEvents = 'none';
+                document.querySelector('.popup').style.borderStyle = 'solid';
+                $('#popup').html(content);
+            }, "html");
+        }
+
+        function editGrant() {
+            const selectedGrant = document.getElementById('grantList').value;
+            if (selectedGrant == "") {
+                alert('Please Select A Grant');
+            }
+            else {
+                $.post("/edit/", 'action=edit' + '&grantid=' + encodeURIComponent(selectedGrant), function (data, status) {
+                    var div = $("<div>").html(data);
+                    var content = $("#editData", div.get(0));
+                    const element = document.querySelector('.blur');
+                    document.querySelector('.title').style.filter = 'blur(3px)';
+                    element.style.filter = 'blur(3px)';
+                    element.style.pointerEvents = 'none';
+                    document.querySelector('.popup').style.borderStyle = 'solid';
+                    $('#popup').html(content);
+                }, "html");
+            }
+        }
+
+        function deleteGrant() {
+            const selectedGrant = document.getElementById('grantList').value;
+            if (selectedGrant == "") {
+                alert('Please Select A Grant');
+            }
+            else {
+                $.post("/edit/", 'action=remove' + '&grantid=' + encodeURIComponent(selectedGrant), function (data, status) {
+                    var div = $("<div>").html(data);
+                    var content = $("#deleteData", div.get(0));
+                    const element = document.querySelector('.blur');
+                    document.querySelector('.title').style.filter = 'blur(3px)';
+                    element.style.filter = 'blur(3px)';
+                    element.style.pointerEvents = 'none';
+                    document.querySelector('.popup').style.borderStyle = 'solid';
+                    $('#popup').html(content);
+                }, "html");
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener("mouseup", (event) => {
+        var checkList = document.getElementById('list1');
+        var items = document.getElementById('items');
+        if (!items.contains(event.target) && !checkList.contains(event.target) && items.classList.contains('visible')) { 
+            items.classList.remove('visible');
+            items.style.display = "none";
+        }
+        });
+    </script>
+</head>
+
+<body class="container">
+
+    <h1 class="title">
+        <div class="tft">TOYS FOR TEXANS</div>
+        <div class="gs">Grant Software</div>
+        <div class="creator" style="font-size: 15px;">Created By: Rohit Bhupathiraju</div>
+    </h1>
+
+    <div id="popup" class="popup"></div>
+
+    <div class="blur">
+        <div id="grants">
+            {% block content %} {% endblock %}
+        </div>
+
+        <section class="calendar">
+            <div class="calendarText">
+                <h1 class="extrasHeader">Grant Calendar</h1>
+                <p class="extrasBody">Get ahead of the curb, and don't miss out on a single beat. Use the calendar below to stay updated on grant deadlines.</p>
+            </div>
+            <iframe style="z-index: 3;"
+                src="https://calendar.google.com/calendar/embed?height=500&wkst=1&bgcolor=%23e8eae7&ctz=America%2FChicago&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=cm9oaXQuYmh1cGF0aGlyYWp1QHRveXNmb3J0ZXhhbnMub3Jn&color=%23039BE5"
+                style="border:solid 1px #777" width="700" height="500" frameborder="0" scrolling="no"></iframe>
+            <div class="curve"></div>
+        </section>
+
+        <section class="googleSheet">
+            <div class="sheetText">
+                <h1 class="extrasHeader">Assignments</h1>
+                <p class="extrasBody">Find your assigned grants for this week here. Ensure you complete all given grants and change the status as well as upload the submission page into the software.</p>
+            </div>
+                <embed type="text/html" src="https://docs.google.com/spreadsheets/d/11a7vX_9LH0EfnvjDr72qIfbLCgLl66bBVw6QZtPr1-4/edit#gid=0">
+        </section>
+
+        <footer class="footer">
+            <div class="footerImg"><a href="https://www.toysfortexans.org/" target="_blank"><img class="footerImg" src="/static/tft.png"></a></div>
+            <div class="title">Toys for Texans</div>
+            <div class="sub">Nonprofit Organization</div>
+            <div class="desc">Thank you for donating, volunteering, or just taking a look at our website. We provide 100% of our revenue to fund better childhoods.</div>
+        </footer>
+
+
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+        <script type="text/babel" src="/static/grants.js"></script>
+    </div>
+
+</body>
+
+</html>

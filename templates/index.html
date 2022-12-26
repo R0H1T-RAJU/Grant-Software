@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div class="background" style="overflow: hidden;">
+        <div style="float: left;">
+            <div style="margin-bottom: 20px">
+                <button class="homebtnleft" id="button1" name="action" value="create" onclick="createGrant()">CREATE</button>
+                <button class="homebtncenter" id="button2" name="action" value="edit" onclick="editGrant()">EDIT</button>
+                <button class="homebtnright" id="button3" name="action" value="remove" onclick="deleteGrant()">REMOVE</button>
+            </div>
+
+            <div>
+                <hr> 
+            </div>
+
+            <form id="homeForm" action="/edit" method="post">
+                <div id="grantsAndFilter">
+                    <div id="grantSelect">Loading Data...</div>
+                </div>
+                <div class="grantCount">
+                    <span>Total: {{grantTotal}}</span>
+                    <a style="width: 40px" target="_blank" href="https://drive.google.com/drive/folders/1XPrZbpyw-cRdniIXymO3AhOYsv6uTVQY?usp=sharing"><img class = "learnMore" src="/static/learnMore.png" alt="learn more"></a>
+                </div>
+
+                <input type="hidden" name="action" id="action" value="">
+            </form>
+        </div>
+
+        <div id="grantInfo" class="grantInfo"></div>
+    </div>
+</div>
+    
+
+{% endblock %}

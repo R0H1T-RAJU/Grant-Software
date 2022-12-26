@@ -1,0 +1,40 @@
+from datetime import date
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+cred = credentials.Certificate("meta-tracker-355700-115e985e285d.json")
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+grantCollection = u'grants'
+
+batch = db.batch()
+
+def changeStatus(request):
+  grants_ref = db.collection(grantCollection)
+# Changes status of grants to open
+  changeToOpen_ref = grants_ref.where(u'ApplyStartDate', u'>=', str(date.today()))
+  changeToOpen_dict = {x.id : x.to_dict() for x in changeToOpen_ref.stream()}
+  filteredChangeToOpen_dict = {}
+  if changeToOpen_dict:
+    for key, value in changeToOpen_dict.items():
+      if not value['ApplyDeadline']  <= str(date.today()) and value['GrantStatus'] != 'Grant Open':
+        filteredChangeToOpen_dict[key] = value
+    for grantId in filteredChangeToOpen_dict:
+      batch.update(grants_ref.document(grantId), {u'GrantStatus' : 'Grant Open'})
+
+# Changes status of grants to closed
+  changeToClose_ref = grants_ref.where(u'ApplyDeadline', u'!=', '').where(u'ApplyDeadline', u'<=', str(date.today()))
+  changeToClose_dict = {x.id : x.to_dict() for x in changeToClose_ref.stream()}
+  filteredChangeToClose_dict = {}
+  if changeToClose_dict:
+    for key, value in changeToClose_dict.items():
+      if not value['GrantStatus'] == 'Grant Closed':
+        filteredChangeToClose_dict[key] = value
+    for grantId in filteredChangeToClose_dict:
+      batch.update(grants_ref.document(grantId), {u'GrantStatus' : 'Grant Closed'})
+
+# sends the updated status data to the database
+  if(changeToClose_dict or filteredChangeToOpen_dict): 
+    batch.commit()
