@@ -34,15 +34,55 @@ button:hover {
 }
 
 .popup {
-    position: absolute;
-    margin-top: 60px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     z-index: 9;
-    width: 400px;
+    background-color: rgb(243, 243, 243);
+    position: absolute;
+    border-radius: 30px;
+    width: fit-content;
     height: fit-content;
-    top: 20%;
-    left: 38%;
-    background-color: rgb(255, 255, 255);
-    border-radius: 3px;
+    padding-bottom: 7px;
+    transform: translate(35em, 5em);
+}
+
+#deleteData div{
+    margin-top: 5px;
+}
+
+.data {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 450px;
+
+}
+
+.popup input, .popup textarea, .popup select {
+    padding: 3px 3px;
+    background-color: #fff;
+    border: 2px solid #8b8a8b;
+    border-radius: 4px;
+    transition: 180ms box-shadow ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.popup input:focus, .popup textarea:focus, .popup select:focus {
+    box-shadow: 0 0 0 3px hsla(245, 100%, 82%, 0.8);
+    outline: 3px solid transparent;
+}
+.popup input:hover, .popup textarea:hover, .popup select:hover{
+    cursor: pointer;
+}
+
+.popup input[type=text] {
+    width: 250px;
+}
+
+.popup textarea {
+    width: 350px;
+    resize: vertical;
 }
 
 .blur {
@@ -60,8 +100,7 @@ button:hover {
     text-align: center;
 }
 
-.gs {
-    font-family: 'Caudex', sans-serif;
+.gs, .creator {
     font-weight: 200;
     margin-left: auto;
     margin-right: auto;
@@ -70,22 +109,14 @@ button:hover {
 
 .creator {
     font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+}
+
+.gs {
+    font-family: 'Caudex', sans-serif;
 }
 
 .webpageHome {
     position: absolute;
-}
-
-.data {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-bottom: 7px;
 }
 
 .sort {
@@ -94,13 +125,6 @@ button:hover {
     height: 20px;
     font-size: 15px;
     position: absolute
-}
-
-.removeButtons {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: medium;
-    margin-left: 130px;
 }
 
 .grantInfo {
@@ -216,7 +240,6 @@ section {
     z-index: 2;
 }
 
-
 .googleSheet {
     margin-top: 0px;
     width: 100%;
@@ -312,31 +335,20 @@ section {
     width: 5in;
 }
 
+.homebtnleft, .homebtncenter, .homebtnright {
+    background: rgba(0, 0, 0, 0);
+    font-size: 15px;
+    margin-top: 20px;
+    border-style: none;
+}
 .homebtnleft {
-    background: rgba(0, 0, 0, 0);
-    font-size: 15px;
-    margin-top: 20px;
-    margin-left: 60px;
-    margin-right:0px;
-    border-style: none;
+    margin-left: 60px; margin-right: 0px;
 }
-
 .homebtncenter {
-    background: rgba(0, 0, 0, 0);
-    font-size: 15px;
-    margin-top: 20px;
-    margin-left: 120px;
-    margin-right:110px;
-    border-style: none;
+    margin-left: 120px; margin-right: 110px;
 }
-
 .homebtnright {
-    background: rgba(0, 0, 0, 0);
-    font-size: 15px;
-    margin-top: 20px;
-    margin-left: 0px; 
-    margin-right:0px;
-    border-style: none;
+    margin-left: 0px;  margin-right: 0px;
 }
 
 .anchor {

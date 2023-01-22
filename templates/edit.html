@@ -13,19 +13,18 @@
             <!-- Body Data -->
             <input type="hidden" name="grantid" value={{grantid}}>
             <input type="hidden" name="Name" value="{{doc['Name']}}">
-            <div>STATUS: {{doc['GrantStatus']}}</div>
-            <div>WEBSITE: <a href="{{doc['Website']}}">{{doc['Website']}}</a> </div>
-            <div>IS IT RECURRING: {{doc['Recurring']}}</div>
-            <div>APPLY START DATE: {{doc['ApplyStartDate']}}</div>
-            <div>APPLY DEADLINE: {{doc['ApplyDeadline']}}</div> 
-            <div>GRANT AMOUNT: {{doc['GrantAmount']}}</div>
-            <div>WHO IS GIVING THIS GRANT: {{doc['GrantGiver']}}</div>
-            <div>GRANT DESCRIPTION: {{doc['GrantDescription']}}</div>
+            <div><span class="viewDataLabel">STATUS: </span>{{doc['GrantStatus']}}</div>
+            <div><span class="viewDataLabel">WEBSITE: </span><a target="_blank" href="{{doc['Website']}}">{{doc['Website']}}</a></div>
+            <div><span class="viewDataLabel">IS IT RECURRING: </span>{{doc['Recurring']}}</div>
+            <div><span class="viewDataLabel">APPLY START DATE: </span>{{doc['ApplyStartDate']}}</div>
+            <div><span class="viewDataLabel">APPLY DEADLINE: </span>{{doc['ApplyDeadline']}}</div> 
+            <div><span class="viewDataLabel">GRANT AMOUNT: </span>{{doc['GrantAmount']}}</div>
+            <div><span class="viewDataLabel">WHO IS GIVING THIS GRANT: </span>{{doc['GrantGiver']}}</div>
+            <div><span class="viewDataLabel">GRANT DESCRIPTION: </span>{{doc['GrantDescription']}}</div>
             <!-- ----------------- -->
-            <div  style="text-align: center; margin-top: 15px;">Are You Sure You Want to Delete This Item?</div>
             <div class="removeButtons">
-                <button style="font-family:sans-serif;" onclick="" >YES</button>
-                <a href="/home/"><input type="button" value="NO"></a>
+                <input type="submit" style="font-family: sans-serif;" value="Delete"></input>
+                <a href="/home/"><input type="button" value="Cancel"></a>
             </div>
         </form>
     </div>
@@ -53,12 +52,12 @@
             <input type="hidden" name="DateCreated" value="{{doc['DateCreated']}}">
             <div>Website: <input type="text" name="Website" value="{{doc['Website']}}"/></div>
             <div>Is It Recurring: <input type="text" name="Recurring" value="{{doc['Recurring']}}"/></div>
-            <div>Apply Start Date:<input type="date" name="ApplyStartDate" value="{{doc['ApplyStartDate']}}"/></div>
+            <div>Apply Start Date: <input type="date" name="ApplyStartDate" value="{{doc['ApplyStartDate']}}"/></div>
             <div>Apply Deadline: <input type="date" name="ApplyDeadline" value="{{doc['ApplyDeadline']}}"/></div> 
             <div>Grant Amount: <input type="text" name="GrantAmount" value="{{doc['GrantAmount']}}"/></div>
             <div>Who Is Giving This Grant: <input type="text" name="GrantGiver" value="{{doc['GrantGiver']}}"/></div>
             <div>Optional Link: <input type="text" name="OptionalLink" value="{{doc['OptionalLink']}}"/></div>
-            <div><textarea maxlength="500" placeholder="GRANT DESCRIPTION (500 Chars" name="GrantDescription" rows="4" cols="46" >{{doc['GrantDescription']}}</textarea></div>
+            <div><textarea maxlength="500" placeholder="GRANT DESCRIPTION (500 Chars" name="GrantDescription" rows="4">{{doc['GrantDescription']}}</textarea></div>
             <input type="hidden" name="grantid" value={{grantid}}>
             <!-- ----------------- -->
             <input type="submit" value="Save & Exit">
@@ -93,7 +92,7 @@
             <div>Grant Amount: <input type="text" name="GrantAmount"/></div>
             <div>Who Is Giving This Grant: <input type="text" name="GrantGiver"/></div>
             <div>Optional Link: <input type="text" name="OptionalLink"/></div>
-            <div><textarea maxlength="500" placeholder="GRANT DESCRIPTION (500 Chars)" name="GrantDescription" rows="4" cols="46"></textarea></div>
+            <div><textarea maxlength="500" placeholder="GRANT DESCRIPTION (500 Chars)" name="GrantDescription" rows="4"></textarea></div>
             <!-- ----------------- -->
             <input type="submit" value="Create">
             <a href="/home/"><input type="button" value="Exit"></a>

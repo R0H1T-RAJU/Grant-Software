@@ -43,7 +43,7 @@ def getEventId(name):
 def updateEvent(name, newDate, description):
     eventId = getEventId(name)
     event = service.events().get(calendarId='primary', eventId=eventId).execute()
-    if not eventId == '' and newDate != event['start']['date']:
+    if eventId != '' and newDate != event['start']['date']:
         event['start']['date'] = newDate 
         event['end']['date'] = newDate
         try:
@@ -51,7 +51,7 @@ def updateEvent(name, newDate, description):
             print('Updated event')
         except:
             print('Failed to update event')
-    elif not newDate == event['start']['date']:
+    elif eventId == '':
         createEvent(name, description, newDate)
 
 def deleteEvent(name):
