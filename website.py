@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '0854f7f761d6b80e4e366b38848d3bf35c6d723490739765'
 app.secret_key = '0854f7f761d6b80e4e366b38848d3bf35c6d723490739765'
 
-applicationStatusList = ['None', 'Applied', 'Accepted', 'Rejected']
+applicationStatusList = ['None', 'Assigned', 'Applied', 'Accepted', 'Rejected']
 grantStatusList = ['None', 'Grant Open', 'Grant Closed']
 
 class User:

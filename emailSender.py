@@ -16,7 +16,7 @@ batch = db.batch()
 
 senderEmail = "toysfortexans@gmail.com"
 senderPassword = "bcgrzogzqnakxpow"
-recieverEmails = ['rohitbraju@gmail.com']
+recieverEmails = ['']
 
 # def getUsernames():
 #   usernames = []

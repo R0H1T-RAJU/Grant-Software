@@ -111,13 +111,14 @@ class Grants extends React.Component {
                     <span id="list1" className="dropdown-check-list" tabIndex="100">
                         <span onClick={this.checklist} className="anchor">Filter</span>
                         <ul  id="items" className="items">
-                            <li><input onChange={this.grantStatusChange} value="Grant Open" type="checkbox" />Grant Open</li>
-                            <li><input onChange={this.grantStatusChange} value='Grant Closed' type="checkbox" />Grant Closed</li>
-                            <li><input onChange={this.grantStatusChange} value='None' type="checkbox" />None (Grant)</li>
-                            <li><input onChange={this.applicationStatusChange} value='Applied' type="checkbox" />Applied</li>
-                            <li><input onChange={this.applicationStatusChange} value='Rejected' type="checkbox" />Rejected</li>
-                            <li><input onChange={this.applicationStatusChange} value='Accepted' type="checkbox" />Accepted</li>
-                            <li><input onChange={this.applicationStatusChange} value='None' type="checkbox" />None (App)</li>
+                            <li><input onChange={this.grantStatusChange} value="Grant Open" type="checkbox"/>Grant Open</li>
+                            <li><input onChange={this.grantStatusChange} value='Grant Closed' type="checkbox"/>Grant Closed</li>
+                            <li><input onChange={this.grantStatusChange} value='None' type="checkbox"/>None (Grant)</li>
+                            <li><input onChange={this.applicationStatusChange} value='Assigned' type="checkbox"/>Assigned</li>
+                            <li><input onChange={this.applicationStatusChange} value='Applied' type="checkbox"/>Applied</li>
+                            <li><input onChange={this.applicationStatusChange} value='Rejected' type="checkbox"/>Rejected</li>
+                            <li><input onChange={this.applicationStatusChange} value='Accepted' type="checkbox"/>Accepted</li>
+                            <li><input onChange={this.applicationStatusChange} value='None' type="checkbox"/>None (App)</li>
 
                         </ul>
                     </span>
@@ -134,4 +135,3 @@ class Grants extends React.Component {
 const domContainer = document.querySelector('#grantsAndFilter');
 const root = ReactDOM.createRoot(domContainer);
 root.render(<Grants/>);
-
