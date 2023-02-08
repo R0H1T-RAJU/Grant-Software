@@ -5,7 +5,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate("meta-tracker-355700-115e985e285d.json")
+cred = credentials.Certificate("firebase.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
