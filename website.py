@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect, session, g
 import googleCloud as gc
 import quickstart as calendar
 import time
+import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '0854f7f761d6b80e4e366b38848d3bf35c6d723490739765'
@@ -98,8 +99,15 @@ def remove():
 def view():
     grantid = request.form['grantid']
     doc = gc.db.collection(gc.grantCollection).document(grantid).get().to_dict()
+    doc['DateCreated'] = toDate(doc['DateCreated'])
     return render_template('edit.html', action='view', doc=doc)
 
+def toDate(epochTime):
+    if not isinstance(epochTime, float):
+        return ""
+    dt = datetime.datetime.fromtimestamp(epochTime)
+    dateString = dt.strftime('%Y-%m-%d')
+    return dateString
 
 @app.route('/save/', methods=['POST'])
 def save():
@@ -115,11 +123,6 @@ def save():
     grantEdit_ref = gc.db.collection(gc.grantCollection).document(grantid)
     grantEdit_ref.update(newValues)
     return redirect("/home/", code=302) 
-
-@app.route('/test/')
-def test():
-    return render_template('test.html')
-
 
 @app.route('/api/grants/') 
 def grantsAPI():

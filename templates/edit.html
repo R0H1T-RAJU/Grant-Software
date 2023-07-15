@@ -13,7 +13,8 @@
             <!-- Body Data -->
             <input type="hidden" name="grantid" value={{grantid}}>
             <input type="hidden" name="Name" value="{{doc['Name']}}">
-            <div><span class="viewDataLabel">STATUS: </span>{{doc['GrantStatus']}}</div>
+            <div><span class="viewDataLabel">GRANT STATUS: </span>{{doc['GrantStatus']}}</div>
+            <div><span class="viewDataLabel">APPLICATION STATUS: </span>{{doc['ApplicationStatus']}}</div>
             <div><span class="viewDataLabel">WEBSITE: </span><a target="_blank" href="{{doc['Website']}}">{{doc['Website']}}</a></div>
             <div><span class="viewDataLabel">IS IT RECURRING: </span>{{doc['Recurring']}}</div>
             <div><span class="viewDataLabel">APPLY START DATE: </span>{{doc['ApplyStartDate']}}</div>
@@ -104,6 +105,8 @@
     <div id="viewData" class="viewData">
         <h3 style="text-align: center;">{{doc['Name']}}</h3>
         <input type="hidden" name="grantid" value={{grantid}}>
+        <div><span class="viewDataLabel">Created By: </span>{{doc['CreatedBy']}}</div>
+        <div><span class="viewDataLabel">Date Created: </span>{{doc['DateCreated']}}</div>
         <div><span class="viewDataLabel">GRANT STATUS: </span><span style= {{'color:red' if doc['GrantStatus'] == 'Grant Closed' else 'color:green;'}}>{{doc['GrantStatus']}}<span></div>
         <div><span class="viewDataLabel">APPLCIATION STATUS: </span><span style= {{'color:red' if doc['ApplicationStatus'] == 'Rejected'  else 'color:green;'}}>{{doc['ApplicationStatus']}}<span></div>
         <div><span class="viewDataLabel">GRANT AMOUNT: </span>{{doc['GrantAmount']}}</div>

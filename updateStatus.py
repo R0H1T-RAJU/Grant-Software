@@ -11,6 +11,21 @@ grantCollection = u'grants'
 
 batch = db.batch()
 
+# def my_filtering_function(pair):
+#     unwanted_key = 'Matt'
+#     key, value = pair
+#     if float(value['DateUpdated']) >= 1672531200:
+#         return True  
+#     else:
+#         return False 
+# def getGrants():
+#   grants_ref = db.collection(grantCollection)
+#   filteredGrants = grants_ref.where(u"ApplicationStatus", u'==', u'Applied')
+#   filteredDict = {x.id : x.to_dict() for x in filteredGrants.stream()}
+#   shrunkedDict = dict(filter(my_filtering_function, filteredDict.items()))
+#   print(shrunkedDict)
+#   print(len(shrunkedDict))
+
 def changeStatus(request):
   grants_ref = db.collection(grantCollection)
 # Changes status of grants to open
