@@ -1,6 +1,6 @@
 <h2>Toys For Texans – Grant Manager Application</h2>  
 <p>
-The Toys For Texans Grant Manager is a react application that is built to streamline grant organization and management for Toys For Texans. It allows our volunteers
+The Toys For Texans Grant Manager is a react application that is built to streamline grant organization and management for Toys For Texans.
 <p></p>
 
 <h3>Features</h3>  
